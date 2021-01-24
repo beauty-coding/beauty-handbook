@@ -1,4 +1,4 @@
-package com.simei.map;
+package com.beauty.javacollection.map;
 
 /**
  * todo description

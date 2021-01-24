@@ -1,4 +1,4 @@
-package com.beauty.algorithm.thread;
+package com.beauty.concurrent.thread;
 
 /**
  * todo description

@@ -1,4 +1,4 @@
-package com.beauty.algorithm.singleton;
+package com.beauty.designpatterns.singleton;
 
 /**
  * 匿名内部类

@@ -1,4 +1,4 @@
-package com.beauty.algorithm;
+package com.beauty.jvm;
 
 import java.util.SortedMap;
 import java.util.TreeMap;
