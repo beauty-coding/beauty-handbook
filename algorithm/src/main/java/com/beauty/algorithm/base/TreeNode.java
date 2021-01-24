@@ -1,4 +1,4 @@
-package com.beauty.base;
+package com.beauty.algorithm.base;
 
 /**
  * todo description

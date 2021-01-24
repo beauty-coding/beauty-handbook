@@ -1,6 +1,6 @@
-package com.beauty;
+package com.beauty.algorithm.tree;
 
-import com.beauty.base.TreeNode;
+import com.beauty.algorithm.base.TreeNode;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.beauty.thread;
+package com.beauty.algorithm.thread;
 
 /**
  * todo description

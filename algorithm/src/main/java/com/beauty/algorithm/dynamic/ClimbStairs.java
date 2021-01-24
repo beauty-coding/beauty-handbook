@@ -1,4 +1,4 @@
-package com.beauty;
+package com.beauty.algorithm.dynamic;
 
 /**
  * 爬楼梯
