@@ -1,4 +1,4 @@
-package com.beauty.javacollection.map;
+package com.beauty.collection.map;
 
 import org.junit.Test;
 
