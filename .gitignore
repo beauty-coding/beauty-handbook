@@ -3,3 +3,8 @@
 out
 gen
 /*/target/
+/*/mvnw.cmd
+/*/mvnw
+/*/.gitignore
+/*/.mvn/
+/*/HELP.md
