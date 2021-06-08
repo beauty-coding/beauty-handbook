@@ -12,6 +12,7 @@
         <module>design-patterns</module>
         <module>java</module>
         <module>algorithm</module>
+        <module>maven-study</module>
     </modules>
 
     <!--  依赖  -->
