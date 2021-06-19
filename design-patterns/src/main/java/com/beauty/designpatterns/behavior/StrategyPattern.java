@@ -1,4 +1,4 @@
-package com.beauty.designpatterns.xingwei;
+package com.beauty.designpatterns.behavior;
 
 public class StrategyPattern {
 
