@@ -1,4 +1,4 @@
-package com.beauty.designpatterns.creationalpattern;
+package com.beauty.designpatterns.creation;
 
 /**
  *
