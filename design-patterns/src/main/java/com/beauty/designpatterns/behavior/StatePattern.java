@@ -1,5 +1,8 @@
 package com.beauty.designpatterns.behavior;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 状态模式
  * @author yufw
@@ -13,6 +16,9 @@ public class StatePattern {
         System.out.println("===============");
         context.changeState(new BState());
         context.doWork();
+
+        Map<Integer,Integer> map = new HashMap<>(4);
+        map.clear();
 
     }
 
