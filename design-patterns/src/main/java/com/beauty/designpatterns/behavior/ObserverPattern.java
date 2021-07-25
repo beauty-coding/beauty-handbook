@@ -1,6 +1,8 @@
 package com.beauty.designpatterns.behavior;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,12 +13,19 @@ import java.util.Set;
 public class ObserverPattern {
 
     public static void main(String[] args) {
-        ObserverA observerA = new ObserverA();
-        ObserverB observerB = new ObserverB();
-        Subject subject = new SubjectA();
-        subject.add(observerA);
-        subject.add(observerB);
-        subject.notifyObserver();
+//        ObserverA observerA = new ObserverA();
+//        ObserverB observerB = new ObserverB();
+//        Subject subject = new SubjectA();
+//        subject.add(observerA);
+//        subject.add(observerB);
+//        subject.notifyObserver();
+        Reader readerA = new ReaderA();
+        Reader readerB = new ReaderB();
+        Blogger blogger = new Ming();
+        blogger.addReader(readerA);
+        blogger.addReader(readerB);
+        blogger.write();
+
     }
 }
 
@@ -103,12 +112,55 @@ class ObserverB implements Observer {
  * 博主发新文章，推送给 读者
  */
 
-class Blogger{
+abstract class Blogger{
 
+    List<Reader> readerList = new ArrayList<>();
 
+    void addReader(Reader reader){
+        System.out.println(reader.toString()+"订阅了博主");
+        readerList.add(reader);
+    }
+
+    void removeReader(Reader reader){
+        System.out.println(reader.toString()+"退订了博主");
+        readerList.remove(reader);
+    }
+
+    /**
+     * 写文章
+     */
+    abstract void write();
 
 }
 
-class Reader{
+class Ming extends Blogger{
 
+    /**
+     * 写文章
+     */
+    @Override
+    void write() {
+        System.out.println("写了新文章");
+        readerList.forEach(Reader::read);
+    }
+}
+
+interface Reader{
+
+    void read();
+
+}
+class ReaderA implements Reader{
+
+    @Override
+    public void read() {
+        System.out.println("ReaderA 收到了博主的新文章");
+    }
+}
+class ReaderB implements Reader{
+
+    @Override
+    public void read() {
+        System.out.println("ReaderB 收到了博主的新文章");
+    }
 }
