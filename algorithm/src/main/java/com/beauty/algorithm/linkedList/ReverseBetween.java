@@ -22,6 +22,8 @@ package com.beauty.algorithm.linkedList;
  * }
  */
 
+import java.util.List;
+
 /**
  * todo description
  *
@@ -31,45 +33,77 @@ package com.beauty.algorithm.linkedList;
  * @since v0.1.0.0
  */
 public class ReverseBetween {
+//
+//    static ListNode reverseBetween(ListNode head, int m, int n) {
+//
+//        // 哑铃节点
+//        ListNode dummy = head;
+//
+//        ListNode startPre = new ListNode(0);
+//        ListNode pre = head;
+//        ListNode cur = head;
+//        ListNode aft = head;
+//
+//        startPre.next = head;
+//
+//        int index = 0;
+//
+//        while (head != null){
+//
+//            if (index<m){
+//
+//                startPre = startPre.next;
+//                pre = pre.next;
+//                cur = cur.next;
+//                aft = aft.next;
+//
+//            } else if (index == m){
+//
+//                pre = pre.next;
+//                cur = cur.next;
+//                aft = aft.next;
+//
+//            } else if (index == n){
+//
+//            }
+//
+//            index++;
+//
+//        }
+//
+//        return dummy;
+//
+//    }
 
-    static ListNode reverseBetween(ListNode head, int m, int n) {
-
-        // 哑铃节点
-        ListNode dummy = head;
-
-        ListNode startPre = new ListNode(0);
-        ListNode pre = head;
-        ListNode cur = head;
-        ListNode aft = head;
-
-        startPre.next = head;
-
-        int index = 0;
-
-        while (head != null){
-
-            if (index<m){
-
-                startPre = startPre.next;
-                pre = pre.next;
-                cur = cur.next;
-                aft = aft.next;
-
-            } else if (index == m){
-
-                pre = pre.next;
-                cur = cur.next;
-                aft = aft.next;
-
-            } else if (index == n){
-
-            }
-
-            index++;
-
-        }
-
-        return dummy;
+    public static void main(String[] args) {
 
     }
+
+    static ListNode reverseBetween(ListNode head, int left, int right) {
+
+        ListNode dummyNode = new ListNode(0);
+
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+
+        for (int i = 1; i < left; i++) {
+            pre = pre.next;
+        }
+
+        ListNode cur = pre.next;
+        ListNode aft = null;
+
+        for (int i = 0; i < right - left; i++) {
+            aft = cur.next;
+            cur.next = aft.next;
+            aft.next = pre.next;
+            pre.next = aft;
+        }
+
+        return dummyNode.next;
+
+
+    }
+
+
 }
