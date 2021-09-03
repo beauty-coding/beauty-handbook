@@ -1,25 +1,18 @@
 package com.beauty.designpatterns.behavior;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * 状态模式
+ *
  * @author yufw
  */
 public class StatePattern {
 
     public static void main(String[] args) {
-        Context context = new Context();
-        context.changeState(new AState());
-        context.doWork();
-        System.out.println("===============");
-        context.changeState(new BState());
-        context.doWork();
-
-        Map<Integer,Integer> map = new HashMap<>(4);
-        map.clear();
-
     }
 
 }
@@ -27,19 +20,18 @@ public class StatePattern {
 /**
  * 状态模式 配置类
  */
-class Context{
+class Context {
     private State state;
 
-    public void changeState(State state){
+    public void changeState(State state) {
 
         this.state = state;
 
     }
 
-    public void doWork(){
+    public void doWork() {
         state.doWork();
     }
-
 
 
 }
@@ -47,7 +39,7 @@ class Context{
 /**
  * 状态接口
  */
-interface State{
+interface State {
 
     void doWork();
 
@@ -56,7 +48,7 @@ interface State{
 /**
  * A 状态
  */
-class AState implements State{
+class AState implements State {
 
     @Override
     public void doWork() {
@@ -65,10 +57,11 @@ class AState implements State{
 
     }
 }
+
 /**
  * B 状态
  */
-class BState implements State{
+class BState implements State {
 
     @Override
     public void doWork() {
@@ -77,5 +70,4 @@ class BState implements State{
 
     }
 }
-
 
