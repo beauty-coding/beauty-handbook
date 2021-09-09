@@ -15,6 +15,21 @@ public class StrategyPattern {
         System.out.println("=============");
         strategyContext = new StrategyContext((num1, num2) -> num1*num2);
         System.out.println(strategyContext.operate(10, 2));
+
+
+    }
+
+    private Integer m(int num1, int num2,String type){
+
+        switch (type){
+            case "add":
+                return num1 + num2;
+            case "sub":
+                return num1 - num2;
+            default:
+                return null;
+        }
+
     }
 
 }
@@ -61,6 +76,7 @@ class StrategyContext{
     }
 
     public int operate(int num1, int num2){
+        System.out.println("策略："+this.strategy.toString());
         return strategy.operate(num1, num2);
     }
 }
