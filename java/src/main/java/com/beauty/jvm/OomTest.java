@@ -17,7 +17,7 @@ public class OomTest {
 
     @GetMapping("/oom")
     public String createBean(){
-        List<byte[]> list = new ArrayList<>();
+        List<byte[]> list = new ArrayList();
 
         for (int i = 0; i < 100; i++) {
             byte[] o = new byte[1024*1024];

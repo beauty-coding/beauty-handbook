@@ -1,6 +1,5 @@
 package com.beauty.concurrent.thread;
 
-import org.junit.Test;
 
 /**
  * todo description

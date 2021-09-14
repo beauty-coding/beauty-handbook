@@ -1,6 +1,5 @@
 package com.beauty.collection.map;
 
-import org.junit.Test;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,7 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class CurrentHashMapTest {
 
-    @Test
     public void test(){
         final ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<String, String>();
 //        concurrentHashMap.put()

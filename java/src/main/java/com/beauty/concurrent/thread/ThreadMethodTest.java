@@ -3,7 +3,13 @@ package com.beauty.concurrent.thread;
 import java.util.concurrent.TimeUnit;
 
 /**
- * todo description
+ * 线程操作方法
+ * wait
+ * sleep
+ * yield
+ * join
+ * notify
+ * notifyAll
  *
  * @author yufw
  * @version v0.1.0.0

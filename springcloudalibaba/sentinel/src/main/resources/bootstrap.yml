@@ -5,25 +5,27 @@ spring:
     name: sentinel
 
   cloud:
+    # nacos
     nacos:
-
       discovery:
         server-addr: localhost:8848 #Nacos
         namespace: 2c7f7c46-61b0-4f8a-9ee5-5e09a8108f2d
-
       config:
         server-addr: localhost:8848 #Nacos
         file-extension: yaml #yaml
         group: DEFAULT_GROUP
         namespace: 2c7f7c46-61b0-4f8a-9ee5-5e09a8108f2d
 
-      sentinel:
-        transport:
-#          port: 8719
-          dashboard: localhost:60010
+    # sentinel
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+        port: 8719
 
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
+
