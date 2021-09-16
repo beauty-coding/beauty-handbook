@@ -1,5 +1,6 @@
 package com.beauty.springboot.controller;
 
+import com.beauty.starter.BeautyService;
 import org.springframework.remoting.RemoteAccessException;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
@@ -10,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("/rest")
 public class DemoApi {
+
+    @Resource
+    private BeautyService beautyService;
 
     /**
      * value：抛出指定异常才会重试
@@ -44,4 +49,10 @@ public class DemoApi {
     public Map testPost(@RequestBody Map param){
         return param;
     }
+
+    @GetMapping("/test/starter")
+    public Object testStarter(){
+        return beautyService.sayHello("beauty");
+    }
+
 }

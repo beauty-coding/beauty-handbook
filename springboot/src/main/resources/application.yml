@@ -1,0 +1,8 @@
+server:
+  port: 40010
+
+
+beauty:
+  enable: true
+  prefix: prefix
+  suffix: suffix
