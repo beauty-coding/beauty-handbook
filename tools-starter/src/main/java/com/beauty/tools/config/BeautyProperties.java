@@ -1,4 +1,4 @@
-package com.beauty.starter.config;
+package com.beauty.tools.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

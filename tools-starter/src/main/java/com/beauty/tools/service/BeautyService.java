@@ -1,7 +1,7 @@
-package com.beauty.starter;
+package com.beauty.tools.service;
 
 
-import com.beauty.starter.config.BeautyProperties;
+import com.beauty.tools.config.BeautyProperties;
 
 public class BeautyService {
 

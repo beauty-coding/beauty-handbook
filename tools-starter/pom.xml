@@ -11,8 +11,8 @@
     <groupId>com.beauty</groupId>
     <artifactId>beauty-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>starter</name>
-    <description>starter</description>
+    <name>beauty-spring-boot-starter</name>
+    <description>beauty-spring-boot-starter</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>

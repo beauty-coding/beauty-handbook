@@ -1,6 +1,6 @@
-package com.beauty.starter.config;
+package com.beauty.tools.config;
 
-import com.beauty.starter.BeautyService;
+import com.beauty.tools.service.BeautyService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.Resource;
 
+/**
+ * @author yufw
+ */
 @Configuration
 @EnableConfigurationProperties(BeautyProperties.class)
 @ConditionalOnProperty(

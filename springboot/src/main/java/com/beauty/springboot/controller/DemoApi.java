@@ -1,6 +1,6 @@
 package com.beauty.springboot.controller;
 
-import com.beauty.starter.BeautyService;
+import com.beauty.starter.service.BeautyService;
 import org.springframework.remoting.RemoteAccessException;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 @RequestMapping("/rest")
