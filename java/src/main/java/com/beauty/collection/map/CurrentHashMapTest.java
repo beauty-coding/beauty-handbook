@@ -15,7 +15,7 @@ public class CurrentHashMapTest {
 
     public void test(){
         final ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<String, String>();
-//        concurrentHashMap.put()
+        concurrentHashMap.put("1","1");
     }
 
 

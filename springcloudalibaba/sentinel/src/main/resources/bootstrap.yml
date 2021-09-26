@@ -19,7 +19,7 @@ spring:
     # sentinel
     sentinel:
       transport:
-        dashboard: localhost:8888
+        dashboard: localhost:60010
         port: 8719
 
 management:

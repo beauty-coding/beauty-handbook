@@ -24,6 +24,6 @@ public class OomTest {
             list.add(o);
         }
 
-        return "oom end";
+        return "no oom end";
     }
 }
