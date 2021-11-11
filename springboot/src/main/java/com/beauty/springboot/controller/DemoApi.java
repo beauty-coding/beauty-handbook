@@ -1,5 +1,6 @@
 package com.beauty.springboot.controller;
 
+import com.beauty.idgenerator.util.IdGenerator;
 import com.beauty.starter.service.BeautyService;
 import org.springframework.remoting.RemoteAccessException;
 import org.springframework.retry.annotation.Backoff;
@@ -20,6 +21,19 @@ public class DemoApi {
 
     @Resource
     private BeautyService beautyService;
+
+    @Resource
+    private IdGenerator idGenerator;
+
+    @GetMapping("/id")
+    public Long getId(){
+        try {
+            return idGenerator.nextId();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     /**
      * value：抛出指定异常才会重试
