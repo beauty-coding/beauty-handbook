@@ -140,7 +140,7 @@ class Ming extends Blogger{
      */
     @Override
     void write() {
-        System.out.println("写了新文章");
+        System.out.println("博主写了新文章");
         readerList.forEach(Reader::read);
     }
 }
