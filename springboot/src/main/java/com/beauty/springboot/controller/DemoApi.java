@@ -1,7 +1,9 @@
 package com.beauty.springboot.controller;
 
 import com.beauty.idgenerator.util.IdGenerator;
+import com.beauty.springboot.service.BusinessDealService;
 import com.beauty.starter.service.BeautyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.remoting.RemoteAccessException;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
@@ -21,6 +23,9 @@ public class DemoApi {
 
     @Resource
     private BeautyService beautyService;
+
+    @Autowired
+    private BusinessDealService businessDealService;
 
     @Resource
     private IdGenerator idGenerator;
@@ -66,6 +71,11 @@ public class DemoApi {
     @GetMapping("/test/starter")
     public Object testStarter(){
         return beautyService.sayHello("beauty");
+    }
+
+    @GetMapping("/test/filter")
+    public void testFilter(){
+        businessDealService.doWork();
     }
 
 }
