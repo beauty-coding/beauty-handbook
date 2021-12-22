@@ -1,16 +1,31 @@
-
 spring:
   kafka:
-    bootstrap-servers: 192.168.78.1:9092 #ָ��kafka server�ĵ�ַ����Ⱥ�������м䣬���Ÿ���
+    # 服务集群
+    bootstrap-servers: localhost:9092
+    # 生产者
     producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        # 自定义分区策略
+        partitioner:
+          class: com.beauty.kafka.component.MyPartition
+
+        # 开启事务生产
+        # 开启此配置 必须至少有一个 事务生产者
+    #      transaction-id-prefix: beauty-kakfa-transaction-
+
+    # 消费者
     consumer:
-      group-id: default_consumer_group #Ⱥ��ID
-      enable-auto-commit: false
-      auto-commit-interval: 1000
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: defaultGroup
+      # 批量消费- 每次最大的消费数量
+      max-poll-records: 50
+
+    # 批量消费-开启
+    listener:
+      # 批量消费开启后 原来单个消费的全部失效
+      type: single
+
 
 server:
-  port: 8500
+  port: 8001
+  servlet:
+    context-path: /kafka

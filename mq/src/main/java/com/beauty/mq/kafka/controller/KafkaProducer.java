@@ -1,4 +1,4 @@
-package com.beauty.kafka.controller;
+package com.beauty.mq.kafka.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;

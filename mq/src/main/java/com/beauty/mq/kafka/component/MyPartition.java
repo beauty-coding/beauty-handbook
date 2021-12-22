@@ -1,4 +1,4 @@
-package com.beauty.kafka.component;
+package com.beauty.mq.kafka.component;
 
 import org.apache.kafka.clients.producer.Partitioner;
 import org.apache.kafka.common.Cluster;
