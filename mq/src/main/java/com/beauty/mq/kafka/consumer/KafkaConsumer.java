@@ -1,4 +1,4 @@
-package com.beauty.kafka.component;
+package com.beauty.mq.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;

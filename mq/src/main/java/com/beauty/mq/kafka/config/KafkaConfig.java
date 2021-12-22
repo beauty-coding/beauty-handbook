@@ -1,4 +1,4 @@
-package com.beauty.kafka.component;
+package com.beauty.mq.kafka.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
