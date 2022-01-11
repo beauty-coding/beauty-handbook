@@ -10,7 +10,7 @@ import org.junit.Test;
  * @date 2020/12/4 17:49
  * @since v0.1.0.0
  */
-public class QuickSortLinkList {
+public class SortLinkList {
 
     ListNode method1(ListNode head){
 
