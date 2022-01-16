@@ -23,15 +23,17 @@ public class ChainOfResponsibility {
 /**
  * 审批人
  */
-abstract class Approver{
+abstract class Approver {
 
     public Approver nextApprover;
 
     /**
      * 审批
+     *
      * @return
      */
     abstract Boolean approve(Integer days);
+
     public void setNextApprover(Approver nextApprover) {
         this.nextApprover = nextApprover;
     }
@@ -50,11 +52,11 @@ class GroupLeader extends Approver {
      */
     @Override
     public Boolean approve(Integer days) {
-        if (days == null||days<3) {
+        if (days == null || days < 3) {
             System.out.println("组长审批完成");
             return true;
         }
-        if (nextApprover!=null) {
+        if (nextApprover != null) {
 
             return nextApprover.approve(days);
         }
@@ -66,7 +68,7 @@ class GroupLeader extends Approver {
 /**
  * 部门leader
  */
-class DeptLeader extends Approver{
+class DeptLeader extends Approver {
 
 
     /**
@@ -77,11 +79,11 @@ class DeptLeader extends Approver{
      */
     @Override
     public Boolean approve(Integer days) {
-        if (days >= 3&&days<5) {
+        if (days >= 3 && days < 5) {
             System.out.println("部门经理审批完成");
             return true;
         }
-        if (nextApprover!=null) {
+        if (nextApprover != null) {
 
             return nextApprover.approve(days);
         }
@@ -93,7 +95,7 @@ class DeptLeader extends Approver{
 /**
  * 副总
  */
-class VicePresident extends Approver{
+class VicePresident extends Approver {
 
 
     /**
@@ -108,7 +110,7 @@ class VicePresident extends Approver{
             System.out.println("副总审批完成");
             return true;
         }
-        if (nextApprover!=null) {
+        if (nextApprover != null) {
 
             return nextApprover.approve(days);
         }
