@@ -26,27 +26,27 @@ package com.beauty.designpatterns.creation;
 public class SimpleFactoryPattern {
     public static void main(String[] args) {
         final Product productA = SimpleFactory.creatProduct(1);
-        productA.doWork();
+        productA.getProduct();
         final Product productB = SimpleFactory.creatProduct(2);
-        productB.doWork();
+        productB.getProduct();
     }
 
     public interface Product{
 
-        void doWork();
+        void getProduct();
     }
 
     static class ConcreteProductA implements Product{
 
         @Override
-        public void doWork() {
+        public void getProduct() {
             System.out.println("对象A");
         }
     }
     static class ConcreteProductB implements Product{
 
         @Override
-        public void doWork() {
+        public void getProduct() {
             System.out.println("对象B");
         }
     }

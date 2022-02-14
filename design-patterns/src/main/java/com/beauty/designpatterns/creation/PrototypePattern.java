@@ -19,9 +19,14 @@ public class PrototypePattern {
     public static void main(String[] args) {
         final ShallowCloneInstance instance = new ShallowCloneInstance();
         instance.setItem("ShallowCloneInstance");
+        instance.setPerson(new Person());
         final ShallowCloneInstance clone = instance.clone();
-        System.out.println("instance:"+instance);
-        System.out.println("clone:"+clone);
+        System.out.println(instance);
+        System.out.println(clone);
+        System.out.println(instance.getItem());
+        System.out.println(instance.getPerson());
+        System.out.println(clone.getItem());
+        System.out.println(clone.getPerson());
     }
 
 }
@@ -31,7 +36,25 @@ public class PrototypePattern {
  */
 class ShallowCloneInstance implements Cloneable{
 
+    private int age;
     private String item;
+    private Person person;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
 
     public ShallowCloneInstance() {
 
@@ -39,6 +62,10 @@ class ShallowCloneInstance implements Cloneable{
 
     public void setItem(String item) {
         this.item = item;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     @Override
@@ -50,14 +77,65 @@ class ShallowCloneInstance implements Cloneable{
         }
     }
 
+}
+
+class DeepCloneInstance implements Cloneable{
+
+
+    private int age;
+    private String item;
+    private Person person;
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public DeepCloneInstance() {
+
+    }
+
+
     @Override
-    public String toString() {
-        return "ShallowClonceInstance{" +
-                "item='" + item + '\'' +
-                '}';
+    public DeepCloneInstance clone() {
+        try {
+            DeepCloneInstance clone = (DeepCloneInstance) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }
 
-class DeepCloneInstance{
 
+class Person implements Cloneable{
+
+    @Override
+    public Person clone() {
+        try {
+            return (Person) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

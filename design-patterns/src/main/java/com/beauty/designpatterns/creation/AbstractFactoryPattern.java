@@ -29,9 +29,12 @@ package com.beauty.designpatterns.creation;
 public class AbstractFactoryPattern {
 
     public static void main(String[] args) {
-        final ChickenSetFactory chickenSetFactory = new ChickenSetFactory();
-        chickenSetFactory.create();
-        System.out.println(chickenSetFactory);
+        final SetMeal chicken1SetFactory = new Chicken1SetFactory();
+        chicken1SetFactory.create();
+        System.out.println(chicken1SetFactory);
+        final SetMeal chicken2SetFactory = new Chicken2SetFactory();
+        chicken2SetFactory.create();
+        System.out.println(chicken2SetFactory);
     }
 
 }
@@ -148,12 +151,16 @@ class PopcornChicken implements Snack{
     }
 }
 
+    /**
+     * 套餐 抽象工厂
+     */
+
 interface SetMeal {
 
     void create();
 }
 
-class ChickenSetFactory implements SetMeal{
+class Chicken1SetFactory implements SetMeal{
     Drink drink;
 
     StapleFood stapleFood;
@@ -172,7 +179,33 @@ class ChickenSetFactory implements SetMeal{
 
     @Override
     public String toString() {
-        return "ChickenSetFactory{" +
+        return "Chicken1SetFactory{" +
+                "drink=" + drink +
+                ", stapleFood=" + stapleFood +
+                ", snack=" + snack +
+                '}';
+    }
+}
+
+class Chicken2SetFactory implements SetMeal{
+    Drink drink;
+    StapleFood stapleFood;
+    Snack snack;
+
+
+    @Override
+    public void create() {
+        final Drink coke = new Coke();
+        final StapleFood chickenRolls = new ChickenRolls();
+        final Snack popcornChicken = new PopcornChicken();
+        snack = popcornChicken.create();
+        stapleFood = chickenRolls.create();
+        drink = coke.create();
+    }
+
+    @Override
+    public String toString() {
+        return "Chicken2SetFactory{" +
                 "drink=" + drink +
                 ", stapleFood=" + stapleFood +
                 ", snack=" + snack +

@@ -31,41 +31,41 @@ public class BuilderPattern {
  */
 class Meal {
 
-    private String hanbao;
-    private String kele;
-    private String jimihua;
+    private String stapleFood;
+    private String drink;
+    private String snack;
 
     public Meal() {
     }
 
-    public String getHanbao() {
-        return hanbao;
+    public String getStapleFood() {
+        return stapleFood;
     }
 
-    public void setHanbao(String hanbao) {
-        this.hanbao = hanbao;
+    public void setStapleFood(String stapleFood) {
+        this.stapleFood = stapleFood;
     }
 
-    public String getKele() {
-        return kele;
+    public String getDrink() {
+        return drink;
     }
 
-    public void setKele(String kele) {
-        this.kele = kele;
+    public void setDrink(String drink) {
+        this.drink = drink;
     }
 
-    public String getJimihua() {
-        return jimihua;
+    public String getSnack() {
+        return snack;
     }
 
-    public void setJimihua(String jimihua) {
-        this.jimihua = jimihua;
+    public void setSnack(String snack) {
+        this.snack = snack;
     }
 
     public void ok(){
-        System.out.println(kele);
-        System.out.println(jimihua);
-        System.out.println(hanbao);
+        System.out.println(drink);
+        System.out.println(snack);
+        System.out.println(stapleFood);
         System.out.println("上菜");
     }
 }
@@ -82,9 +82,9 @@ class Salesperson {
     }
 
     public Meal construct(){
-        builder.buildKele();
-        builder.buildHanbao();
-        builder.buildJimihua();
+        builder.buildDrink();
+        builder.buildStapleFood();
+        builder.buildSnack();
         return builder.getResult();
     }
 
@@ -97,9 +97,9 @@ abstract class Builder{
 
     Meal product = new Meal();
 
-    public abstract void buildHanbao();
-    public abstract void buildKele();
-    public abstract void buildJimihua();
+    public abstract void buildStapleFood();
+    public abstract void buildDrink();
+    public abstract void buildSnack();
 
     public Meal getResult(){
         return product;
@@ -113,19 +113,19 @@ abstract class Builder{
 class RealBuilder extends Builder{
 
     @Override
-    public void buildHanbao() {
-        product.setHanbao("汉堡做好了");
+    public void buildStapleFood() {
+        product.setStapleFood("汉堡做好了");
     }
 
     @Override
-    public void buildKele() {
+    public void buildDrink() {
 
-        product.setKele("可乐做好了");
+        product.setDrink("可乐做好了");
     }
 
     @Override
-    public void buildJimihua() {
-        product.setJimihua("鸡米花做好了");
+    public void buildSnack() {
+        product.setSnack("鸡米花做好了");
     }
 
 }
