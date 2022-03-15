@@ -1,0 +1,17 @@
+server:
+  port: 40010
+
+
+beauty:
+  enable: true
+  prefix: prefix
+  suffix: suffix
+
+
+
+  id-generator:
+    enable: true
+    snowFlakeProperties:
+      worker-id: 1
+      datacenter-id: 1
+    type: SNOWFLAKE
