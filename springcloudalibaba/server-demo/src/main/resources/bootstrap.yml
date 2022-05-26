@@ -1,0 +1,52 @@
+
+spring:
+  application:
+    name: server-demo
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #配置Nacos地址
+        namespace: bb84f64f-eaf7-4cf3-97b4-3d939ae1dce9
+      config:
+#        Nacos配置中心 的核心概念：
+#        2.1、Data ID：
+#        （1）Data ID 的命名格式：
+#        前面我们演示了在 nacos 控制台新建一个 DataID 为 cloud-producer-server-dev.yaml 的数据集，那么这个 Data ID 是什么呢？Data ID 是配置集的唯一标识，一个应用可以包含多个配置集，每个配置集都需要被一个有意义的名称标识。那么 Data ID 怎么取值呢？格式通俗一点就是 “前缀-环境-扩展名”，如下所示：
+#        ${spring.cloud.nacos.config.prefix}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+#        ① prefix：前缀，默认是 spring.application.name 的值，也可以通过配置项 spring.cloud.nacos.config.prefix 来配置。
+#        # 若不指定，默认采用应用名的方案
+#        spring.application.name=cloud-producer-server
+#        # 手动指定配置的dataID前缀标识
+#        # spring.cloud.nacos.config.prefix=cloud-producer-server-config
+#        ② active：配置运行环境，即为当前环境对应的 profile。
+#        注意：当 spring.profiles.active 为空时，对应的连接符 ”-“ 也将不存在，dataId 的拼接格式变成 ${prefix}.${file-extension}
+#        # dev表示开发环境
+#        spring.profiles.active=dev
+#        ③ file-exetension：配置文件的类型，默认是 properties，也可以通过配置项 spring.cloud.nacos.config.file-extension 来配置，目前支持的类型有 TEXT、JSON、XML、YAML、HTML、Properties
+#        # 指定配置文件类型为yaml文件
+#        spring.cloud.nacos.config.file-extension=yaml
+#        ④ 最终配置：
+#        经过前面三个步骤，我们最终在nacos配置中心的控制台新增配置文件就是：cloud-producer-server.yaml
+        namespace: bb84f64f-eaf7-4cf3-97b4-3d939ae1dce9
+        file-extension: yaml
+    sentinel:
+      transport:
+        # 指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer
+        port: 8791
+        # 添加sentinel的控制台地址
+        dashboard: 127.0.0.1:8080
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 50011
+feign:
+  sentinel:
+    enabled: true

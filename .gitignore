@@ -2,9 +2,9 @@
 *.iml
 out
 gen
-/*/target/
-/*/mvnw.cmd
-/*/mvnw
+/**/mvnw.cmd
+/**/mvnw
 /*/.gitignore
-/*/.mvn/
-/*/HELP.md
+/**/.mvn/
+/**/HELP.md
+/**/target/
