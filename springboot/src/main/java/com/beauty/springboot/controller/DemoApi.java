@@ -15,6 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.http.HttpServletResponse;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
 
 @RestController
@@ -29,6 +38,51 @@ public class DemoApi {
 
     @Resource
     private IdGenerator idGenerator;
+
+    @RequestMapping(value = "/getClassQr")
+    public void getClassQr(@RequestBody Map<String, String> request, HttpServletResponse response) {
+        try {
+            // 设置响应流信息
+            response.setContentType("image/jpg");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setDateHeader("Expires", 0);
+            //海报的宽高
+            int pic_width = 750;
+            int pic_height = 1334;
+            BufferedImage bufferedImage = new BufferedImage(pic_width, pic_height, BufferedImage.TYPE_INT_RGB);
+            OutputStream stream = response.getOutputStream();
+            bufferedImage = getClassQr(request, bufferedImage);
+            //以流的形式输出到前端
+            ImageIO.write(bufferedImage, "jpg", stream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public BufferedImage getClassQr(Map<String, String> request, BufferedImage bufferedImage) {
+
+        String note = "扫码加入班级群";
+        Graphics2D graphics2D = (Graphics2D) bufferedImage.getGraphics();
+        graphics2D.setColor(Color.WHITE);
+        graphics2D.fillRect(0, 0, 750, 1334);
+        graphics2D.setColor(Color.BLACK);
+        try {
+            Font font = new Font("微软雅黑", Font.BOLD, 48);
+
+            font = new Font("微软雅黑", Font.PLAIN, 36);
+            graphics2D.setFont(font);
+            graphics2D.drawString(note, 252, 1024);
+            //5.填充logo图片
+            ClassLoader classLoader = this.getClass().getClassLoader();
+            String path = classLoader.getResource("").getPath().replace("/WEB-INF/classes/", "/resources/images/oasisbasic/logo.png");
+            InputStream inputStream = classLoader.getResourceAsStream(path);
+            graphics2D.drawImage(ImageIO.read(inputStream), 206, 1238, 344, 32, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
+    }
 
     @GetMapping("/id")
     public Long getId(){

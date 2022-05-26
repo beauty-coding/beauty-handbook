@@ -1,19 +1,1 @@
-spring:
-  application:
-    name: server-demo
-  profiles:
-    active: dev
 
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848 #配置Nacos地址
-        namespace: 2c7f7c46-61b0-4f8a-9ee5-5e09a8108f2d
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-server:
-  port: 50011
